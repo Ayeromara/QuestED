@@ -6,6 +6,9 @@ const globalStyle = StyleSheet.create({
     },
     flex:{
         flex: 1
+    },
+    backgroundwhite:{
+        backgroundColor:'F1F1FA'
     }
 });
 
