@@ -5,16 +5,22 @@ import globalStyle from "../../assets/styles/globalStyles";
 import Header from "../../components/Header/Header";
 import Button from "../../components/Button/Button";
 import SearchCard from "../../components/SearchCard/SearchCard";
+import Badge from "../../components/Badge/Badge";
+import { verticalScale } from "../../assets/styles/scaling";
+import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
+import {faSearch} from "@fortawesome/free-solid-svg-icons"
+import Search from "../../components/Search/Search";
 
 const Home = () =>{
     return (
-    <SafeAreaView style={[globalStyle.backgroundPrimary, globalStyle.flex]}>
-        <Header title ={'Poetri Lazuardi'} type={1}/>
-        <Button title={'Start Learning'} onPress={()=>{console.log('pressed')}}/>
-        <SearchCard 
-        text={'Declarative interfaces for any Apple Devices'}
-        text2={'CSC 401'}
-        text3={'⭐  400Level'}/>
+    <SafeAreaView style={[globalStyle.backgroundPrimary, globalStyle.flex,]}>
+        <View style={{height:'15%'}}>
+            <Search />
+        </View>
+        <View style={[globalStyle.backgroundWhiteCurve, {height:'85%'}]}>
+
+
+        </View>
 
     </SafeAreaView> 
     )

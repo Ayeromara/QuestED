@@ -2,9 +2,12 @@ import React from "react";
 import { Pressable, Text, View } from "react-native";
 import style from "./style";
 import PropTypes from "prop-types";
+import { horizontalScale } from "../../assets/styles/scaling";
 
 const SearchCard = (props) =>{
     return (
+
+        <View style={{marginHorizontal: horizontalScale(15)}}>
         <Pressable
         onPress={()=> props.onPress()} 
         style={style.pressable}>
@@ -17,6 +20,7 @@ const SearchCard = (props) =>{
                 </View>
             </View>
         </Pressable>
+        </View>
     )
 };
 

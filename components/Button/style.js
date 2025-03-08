@@ -3,10 +3,18 @@ import { horizontalScale, scaleFontSize, verticalScale } from "../../assets/styl
 
 const style = StyleSheet.create({
     button:{
-        backgroundColor: 'white',
+        backgroundColor: '#6360FF',
         height: verticalScale(48),
         justifyContent: 'center',
-        borderRadius: horizontalScale(10)
+        borderRadius: horizontalScale(10),
+        flex: 'row',
+        alignItems:'center',
+        width: horizontalScale(120)
+    },
+    btnContainer:{
+        alignItems:'center',
+        justifyContent: 'center',
+        flex: 'row',
     },
     title:{
         color: '#FCFCFF',
