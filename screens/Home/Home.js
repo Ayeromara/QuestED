@@ -10,20 +10,17 @@ import { verticalScale } from "../../assets/styles/scaling";
 import {FontAwesomeIcon} from "@fortawesome/react-native-fontawesome";
 import {faSearch} from "@fortawesome/free-solid-svg-icons"
 import Search from "../../components/Search/Search";
+import { useSelector } from "react-redux";
 
 const Home = () =>{
+
+    const user = useSelector((state) => state.user);
+    console.log(user)
     return (
-    <SafeAreaView style={[globalStyle.backgroundPrimary, globalStyle.flex,]}>
-        <View style={{height:'15%'}}>
-            <Search />
-        </View>
-        <View style={[globalStyle.backgroundWhiteCurve, {height:'85%'}]}>
-
-
-        </View>
-
+    <SafeAreaView style={[globalStyle.backgroundwhite, globalStyle.flex,]}>
+        <Header title ={user.firstName + user.lastName}/>
     </SafeAreaView> 
     )
-}
+} 
 
 export default Home;
