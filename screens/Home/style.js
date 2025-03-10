@@ -42,7 +42,18 @@ const style = StyleSheet.create({
     recommend:{
         marginHorizontal: horizontalScale(30),
         marginTop: verticalScale(20),
-        paddingBottom: verticalScale(10)
+    },
+    categoryItem:{
+        marginRight: horizontalScale(10),
+        backgroundColor:''
+    },
+    badge:{
+        marginHorizontal: verticalScale(23)
+    },
+    flatlist:{
+        marginHorizontal:horizontalScale(30)
+    },
+    coursesItemsContainer:{
     }
 })
 

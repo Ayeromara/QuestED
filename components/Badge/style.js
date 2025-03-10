@@ -5,7 +5,6 @@ import { horizontalScale, verticalScale } from "../../assets/styles/scaling";
     body:{
         flex:'row',
         justifyContent:'center',
-        alignItems:'center',
         marginTop: verticalScale(20)
     },
     container:{
