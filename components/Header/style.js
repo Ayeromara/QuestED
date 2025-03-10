@@ -6,11 +6,11 @@ const style = StyleSheet.create({
     title1 : {
         fontFamily:'DMSans-Bold' ,
         fontSize: scaleFontSize(22),
-        color: 'white',
+        color: '#FCFCFF',
     },
     title2 : {
         fontFamily:'DMSans-Bold' ,
-        fontSize: scaleFontSize(22),
+        fontSize: scaleFontSize(19),
         color: '#161719',
     },
     title3 : {

@@ -4,6 +4,7 @@ const initialState={
     firstName: 'Isaiah',
     lastName: 'Ayeromara',
     userId: 1,
+    profileImage: ''
 }
 
 export const User = createSlice({
@@ -13,9 +14,12 @@ export const User = createSlice({
         updateFirstName:(state, action) =>{
             state.firstName = action.payload.firstName;
         },
+        resetToInitialState:()=>{
+            return initialState
+        }
     },
 });
 
-export const {updateFirstName} = User.actions;
+export const {updateFirstName,resetToInitialState} = User.actions;
 
 export default User.reducer;

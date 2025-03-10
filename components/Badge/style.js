@@ -6,7 +6,7 @@ import { horizontalScale, verticalScale } from "../../assets/styles/scaling";
         flex:'row',
         justifyContent:'center',
         alignItems:'center',
-        marginTop: verticalScale(15)
+        marginTop: verticalScale(20)
     },
     container:{
         backgroundColor: '#C8C9FF',
@@ -15,7 +15,7 @@ import { horizontalScale, verticalScale } from "../../assets/styles/scaling";
         justifyContent:'space-between',
         flexDirection: 'row',
         alignItems:"center",
-        borderRadius: 14,
+        borderRadius: 20,
         paddingHorizontal: horizontalScale(10)
     },
     image:{
@@ -25,7 +25,9 @@ import { horizontalScale, verticalScale } from "../../assets/styles/scaling";
 
     },
     btn:{
-        bottom: 1
+        height:'100%',
+        justifyContent:'flex-end',
+        marginBottom: horizontalScale(25)
     }
 
  })
