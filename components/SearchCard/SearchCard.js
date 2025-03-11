@@ -9,7 +9,7 @@ const SearchCard = (props) =>{
 
         <View style={{marginHorizontal: horizontalScale(15)}}>
         <Pressable
-        onPress={()=> props.onPress()} 
+        onPress={()=> {props.onPress(props.coursesItemId)}} 
         style={style.pressable}>
             <View style={style.inside}>
                 <View  style={style.Cardinfo}></View>
@@ -28,6 +28,7 @@ SearchCard.default ={
     onPress:()=>{},
 };
 SearchCard.propTypes ={
+    coursesItemId: PropTypes.number.isRequired,
     text: PropTypes.string.isRequired,
     text2: PropTypes.string.isRequired,
     text3: PropTypes.string.isRequired,

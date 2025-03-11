@@ -13,10 +13,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { ScrollView } from "react-native-gesture-handler";
 import Tab from "../../components/Tabs/Tabs";
 import { updateSelectedCategoryId } from "../../redux/reducers/Categories";
+import { updateSelectedCoursesId } from "../../redux/reducers/Courses";
+import { Routes } from "../../navigation/Routes";
 
 
 
-const Home = () =>{
+const Home = ({navigation}) =>{
 
     const dispatch = useDispatch();
     // const categories = useSelector(state => state.categories);
@@ -28,6 +30,8 @@ const Home = () =>{
     // const [categoryList, setCategoryList] = useState([]);
     // const [isLoadingCategories, setIsLoadingCategories] = useState(false);
     // const categoryPageSize = 4;
+ 
+    console.log(coursesItems); 
 
     useEffect(()=>{
         const items = courses.items
@@ -124,9 +128,13 @@ const Home = () =>{
                 )}
                 /> */}
                 <ScrollView showsVerticalScrollIndicator={false}>
+
+                    {coursesItems.length>0 &&(
                 <View style={style.coursesItemsContainer}>
                 {coursesItems.map(value => (
               <SearchCard
+                    onPress= {se}
+                    coursesItemId={value.coursesItemId}
                     key={value.coursesItemId}
                     text={value.name}
                     text2={value.coursesTitle}
@@ -134,6 +142,7 @@ const Home = () =>{
               />
             ))}
                 </View>
+                    )}
                 </ScrollView>
 
 

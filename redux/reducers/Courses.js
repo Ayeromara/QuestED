@@ -59,6 +59,7 @@ const initialState = {
 
   ],
   selectedCoursesId: null,
+  selectedCoursesInformation: null,
 };
 
 const Courses = createSlice({
@@ -70,6 +71,7 @@ const Courses = createSlice({
     },
     updateSelectedCoursesId: (state, action) => {
       state.selectedCoursesId = action.payload;
+      state.selectedCoursesInformation= state.items.find(item => item.coursesItemId === action.payload);
     },
   },
 });

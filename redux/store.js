@@ -9,7 +9,7 @@ import {persistReducer, persistStore} from "redux-persist"
 
 const rootReducer = combineReducers({
     user: userReducer,
-    categories: categoryReducer,
+    // categories: categoryReducer,
     courses: coursesReducer,
 })
 
