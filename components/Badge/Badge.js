@@ -9,7 +9,7 @@ const Badge = () =>{
             <View style={style.container}>
 
             <View style={style.btn}>
-                <Button title={'Get Started'}/>
+                <Button title={'Get Started'} type={1}/>
             </View>
 
 

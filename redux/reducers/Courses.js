@@ -10,15 +10,17 @@ const initialState = {
       coursesItemId: 1,
       categoryIds: [1],
       year: '400 Level First Semester',
+      lectures:'6 Lectures',
     },
     {
       name: 'Software Engineering Project Management',
-      coursesTitle:'CSE403',
+      coursesTitle:'CSE 403',
       description:
         'CSE 403 delves into the methodologies and techniques for managing software engineering projects effectively. This course provides students with a comprehensive understanding of project management principles tailored to software development, including planning, execution, monitoring, and closure. Emphasis is placed on both traditional and agile project management approaches, as well as the tools and skills necessary to lead software teams successfully.',
       coursesItemId: 2,
       categoryIds: [1],
       year: '400 Level First Semester',
+      lectures:'6 Lectures',
     },
     {
       name: 'Software Engineering Professional Practice',
@@ -28,6 +30,7 @@ const initialState = {
       coursesItemId: 3,
       categoryIds: [1],
       year: '400 Level First Semester',
+      lectures:'6 Lectures',
     },
     {
       name: 'Software Engineering Security',
@@ -37,6 +40,7 @@ const initialState = {
       coursesItemId: 4,
       categoryIds: [1],
       year: '400 Level First Semester',
+      lectures:'6 Lectures',
     },
     {
       name: 'Research Methodology',
@@ -46,6 +50,7 @@ const initialState = {
       coursesItemId: 5,
       categoryIds: [1],
       year: '400 Level First Semester',
+      lectures:'6 Lectures',
     },
     {
       name: 'Artificial Intelligence',
@@ -55,6 +60,7 @@ const initialState = {
       coursesItemId: 6,
       categoryIds: [1],
       year: '400 Level First Semester',
+      lectures:'6 Lectures',
     },
 
   ],

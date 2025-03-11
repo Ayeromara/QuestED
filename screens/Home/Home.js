@@ -133,7 +133,11 @@ const Home = ({navigation}) =>{
                 <View style={style.coursesItemsContainer}>
                 {coursesItems.map(value => (
               <SearchCard
-                    onPress= {se}
+                    onPress= {selectedCoursesId=>{
+                        dispatch(updateSelectedCoursesId(selectedCoursesId));
+                         
+                        navigation.navigate(Routes.SingleCoursesItem)
+                    }}
                     coursesItemId={value.coursesItemId}
                     key={value.coursesItemId}
                     text={value.name}
