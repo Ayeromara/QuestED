@@ -1,5 +1,8 @@
 
+
 export const Routes = {
+    Login: 'Login',
     Home: 'Home',
-    SingleCoursesItem: 'SingleCoursesItem'
+    SingleCoursesItem: 'SingleCoursesItem',
+    SignUP:'SignUP'
 };

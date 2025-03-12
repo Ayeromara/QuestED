@@ -18,6 +18,11 @@ const style = StyleSheet.create({
         fontSize: scaleFontSize(23),
         color: '#FCFCFF',
     },
+    title4 : {
+        fontFamily:'DMSans-Bold' ,
+        fontSize: scaleFontSize(15),
+        color: '#6360FF',
+    },
 })
 
 export default style;
