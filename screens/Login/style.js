@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { horizontalScale, verticalScale } from "../../assets/styles/scaling";
+import { horizontalScale, verticalScale, scaleFontSize } from "../../assets/styles/scaling";
 
 const style = StyleSheet.create({
     bottomContainer:{
@@ -14,6 +14,16 @@ const style = StyleSheet.create({
     topContainer:{
         flex:1,
         alignItems:'center',
+        justifyContent:'center'
+    },
+    error:{
+        fontFamily:'DMSans-Medium',
+        fontSize: scaleFontSize(16),
+        color:'#ff0000',
+        marginBottom: verticalScale(15)
+    },
+    errorCont:{
+        flexDirection:'row',
         justifyContent:'center'
     }
 });

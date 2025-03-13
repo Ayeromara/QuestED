@@ -20,10 +20,12 @@ import { Routes } from "../../navigation/Routes";
 
 const Home = ({navigation}) =>{
 
+
     const dispatch = useDispatch();
     // const categories = useSelector(state => state.categories);
     const user = useSelector(state => state.user);
     const courses = useSelector(state => state.courses);
+    console.log(user)
 
     const [coursesItems, setCoursesItems] = useState([]);
     // const [categoryPage, setCategoryPage] = useState(1);
@@ -31,7 +33,6 @@ const Home = ({navigation}) =>{
     // const [isLoadingCategories, setIsLoadingCategories] = useState(false);
     // const categoryPageSize = 4;
  
-    console.log(coursesItems); 
 
     useEffect(()=>{
         const items = courses.items
@@ -71,7 +72,7 @@ const Home = ({navigation}) =>{
                 <View style={style.headertxtcontainer}>
                    
                     <Text style={style.headertxt}>Hello,</Text>
-                    <Header title={user.lastName +' '+ user.firstName[0]}/>
+                    <Header title={user.displayName + '👋'}/>
                 </View>
 
 

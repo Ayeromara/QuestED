@@ -3,7 +3,7 @@ import { Pressable, Text, TextInput, View } from "react-native";
 import PropTypes from "prop-types"
 import style from "./style";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faIdCardClip, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faIdCardClip, faUser } from "@fortawesome/free-solid-svg-icons";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { horizontalScale, scaleFontSize } from "../../assets/styles/scaling";
 
@@ -22,6 +22,8 @@ const Input =(props)=>{
                 return faLock
             case 3:
                 return faUser
+            case 4:
+                return faEnvelope
             default:
                 return style.title1
         }

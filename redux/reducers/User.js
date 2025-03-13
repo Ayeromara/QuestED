@@ -1,9 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState={
-    firstName: 'Isaiah',
-    lastName: 'Ayeromara',
-    userId: 1,
+    isLoggedIn: false,
     profileImage: ''
 }
 
@@ -11,8 +9,8 @@ export const User = createSlice({
     name: 'user',
     initialState: initialState,
     reducers:{
-        updateFirstName:(state, action) =>{
-            state.firstName = action.payload.firstName;
+        logIn:(state,action) =>{
+            return {...state, ...{isLoggedIn: true},...action.payload};
         },
         resetToInitialState:()=>{
             return initialState
@@ -20,6 +18,6 @@ export const User = createSlice({
     },
 });
 
-export const {updateFirstName,resetToInitialState} = User.actions;
+export const {logIn,resetToInitialState} = User.actions;
 
 export default User.reducer;
