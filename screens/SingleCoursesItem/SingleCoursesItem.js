@@ -11,7 +11,6 @@ const SingleCoursesItem = ({navigation, route}) => {
   const coursesItemInformation = useSelector(
     state => state.courses.selectedCoursesInformation,
   );
-  console.log(coursesItemInformation);
 
   return (
     <SafeAreaView style={[globalStyle.backgroundPrimary, globalStyle.flex]}>

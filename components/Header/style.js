@@ -10,7 +10,7 @@ const style = StyleSheet.create({
     },
     title2 : {
         fontFamily:'DMSans-Bold' ,
-        fontSize: scaleFontSize(19),
+        fontSize: scaleFontSize(25),
         color: '#161719',
     },
     title3 : {

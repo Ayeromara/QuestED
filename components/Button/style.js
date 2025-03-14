@@ -20,6 +20,15 @@ const style = StyleSheet.create({
         alignItems:'center',
         width: horizontalScale(300)
     },
+    button3:{
+        backgroundColor: '#6360FF',
+        height: verticalScale(40),
+        justifyContent: 'center',
+        borderRadius: horizontalScale(10),
+        flex: 'row',
+        alignItems:'center',
+        width: horizontalScale(230)
+    },
     btnContainer:{
         alignItems:'center',
         justifyContent: 'center',

@@ -27,7 +27,6 @@ export const NonAuthenticated = () =>{
         screenOptions={{header: ()=> null, headerShown: true}}>
             <Stack.Screen name={Routes.Home} component={Home} />
             <Stack.Screen name={Routes.SingleCoursesItem} component={SingleCoursesItem} />
-            <Stack.Screen name={Routes.Success} component={Success} />
         </Stack.Navigator>
     );
 }

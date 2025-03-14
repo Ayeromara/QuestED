@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { Image, Pressable, SafeAreaView, Text, View } from "react-native";
+import { Image, Pressable, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import style from "./style";
 import globalStyle from "../../assets/styles/globalStyles";
 import Input from "../../components/Input/Input";
@@ -73,7 +73,7 @@ const SignUp = ({navigation})=>{
 
                     
 
-    
+
                 <Button 
                 isDisabled ={
                     fullName.length <= 2 || email.length <= 5 || matricNo.length <= 10 || password.length <= 8}
@@ -92,6 +92,9 @@ const SignUp = ({navigation})=>{
                     }}
                     
                 />
+
+
+
 
                 <Pressable  onPress={()=>{navigation.navigate(Routes.Login)}}>
                         <View style={style.signupredir}>

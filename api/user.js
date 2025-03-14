@@ -30,7 +30,7 @@ export const loginUser = async(email, password) =>{
         }
     } catch(error){
         if(error.code === 'auth/wrong-password'){
-        return {status: false, error: 'please enter a correct password'}
+        return {status: false, error: 'please enter a correct password'};
         }
         else if (error.code === 'auth/user-not-found') {
             return {
@@ -39,6 +39,8 @@ export const loginUser = async(email, password) =>{
                 'The email you entered does not exist. Please create a new account.',
             };
         }
-        return {status: false, error: 'Something went wrong'};
+        return {status: false, error: 'invalid credentials'};
+        
     }
+    
 }

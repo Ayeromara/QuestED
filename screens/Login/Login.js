@@ -8,7 +8,7 @@ import Header from "../../components/Header/Header";
 import { Routes } from "../../navigation/Routes";
 import { loginUser } from "../../api/user";
 import { useDispatch } from "react-redux";
-import { logIn, resetToInitialState } from "../../redux/reducers/User";
+import { logIn } from "../../redux/reducers/User";
 
 
 const Login = ({navigation})=>{
@@ -42,7 +42,6 @@ const Login = ({navigation})=>{
                 <View style={style.bottomContainer}>
 
                     <Input 
-                    keyboardType = {'numeric'}
                     type={4} 
                     placeholder={'Email'} onChangeText={(value) => setEmail(value)}/>
 
@@ -56,9 +55,8 @@ const Login = ({navigation})=>{
                         {error.length >0 && <Text style={style.error}>{error}</Text>}
                     </View>
 
-    
                 <Button 
-                onPress={async ()=> {let user = await loginUser(email, password)
+                onPress={async ()=> {let user = await loginUser(email, password);
                     if (!user.status){
                         setError(user.error);
                     }
@@ -70,14 +68,17 @@ const Login = ({navigation})=>{
                 }}
                 type={2} 
                 title={'Login'}
-                isDisabled ={email.length <= 5 || password.length<= 8}
+                isDisabled ={email.length < 5 || password.length< 8}
                 />
+
+
 
                 <Pressable onPress={()=>{navigation.navigate(Routes.SignUP)}}>
                         <View style={style.signupredir}>
                     <Header type={4} title={"Don't have an account?"}/>
                     </View>
                 </Pressable>
+
 
                 </View>
                 </View>

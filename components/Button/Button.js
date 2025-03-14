@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Pressable, Text, View } from "react-native";
+import { Pressable, Text, TouchableOpacity, View } from "react-native";
 import style from "./style";
 
 const Button = (props) =>{
@@ -20,20 +20,26 @@ const Button = (props) =>{
                 return style.button1
             case 2:
                 return style.button2
+            case 3:
+                return style.button3
             default:
                 return style.title1
         }
     }
 
     return(
+
         <View style={style.btnContainer}>
+        <TouchableOpacity>
         <Pressable 
         onPress={()=> props.onPress()} 
         disabled={props.isDisabled} 
         style={[style1ToApply(), props.isDisabled && style.disabled]}>
             <Text style={styleToApply()}>{props.title}</Text>
         </Pressable>
+        </TouchableOpacity>
         </View>
+
     );
 
 };
