@@ -17,7 +17,7 @@ const style = StyleSheet.create({
     },
     headertxt:{
         fontFamily: 'DMSans-Medium',
-        fontSize: scaleFontSize(15),
+        fontSize: scaleFontSize(10),
         color:'#FCFCFF'
 
     },
@@ -28,7 +28,8 @@ const style = StyleSheet.create({
     },
     headertxtcontainer:{
         flexDirection:'column',
-        gap:horizontalScale(4)
+        gap:horizontalScale(4),
+        justifyContent:'center'
     },
     image:{
         width: verticalScale(40),
@@ -48,12 +49,15 @@ const style = StyleSheet.create({
         backgroundColor:''
     },
     badge:{
-        marginHorizontal: verticalScale(23)
+        flexDirection:'column',
+        alignItems:'center'
     },
     flatlist:{
-        marginHorizontal:horizontalScale(30)
+
     },
     coursesItemsContainer:{
+        flexDirection:'column',
+        alignItems:'center'
     }
 })
 

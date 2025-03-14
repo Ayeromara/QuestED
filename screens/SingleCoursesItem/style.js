@@ -7,7 +7,6 @@ const style = StyleSheet.create({
         justifyContent:'center',
         marginHorizontal: horizontalScale(10),
         marginVertical: verticalScale(20),
-        gap: verticalScale(45),
     },
     header:{
         width: horizontalScale(288),
@@ -19,29 +18,35 @@ const style = StyleSheet.create({
     },
     CDetail:{
         flexDirection:"row",
+        alignItems:'center',
+        height: verticalScale(40),
+        gap: scaleFontSize(15)
+    },
+    headercont:{
+        gap:scaleFontSize(20),
+        marginTop: verticalScale(25)
     },
     text:{
         color:'white',
-        marginTop: verticalScale(12),
         fontFamily: 'DMSans-Regular',
-        fontSize:scaleFontSize(15)
+        fontSize:scaleFontSize(14)
     },
     bottomContainer:{
         flex:1,
         marginTop:verticalScale(20),
         marginHorizontal: horizontalScale(30),
         flexDirection:'column',
-        gap: verticalScale(20)
+        gap: verticalScale(15)
     },
     description:{
         color:'#8183FD',
         fontFamily: 'DMSans-Regular',
-        fontSize: scaleFontSize(14)
+        fontSize: scaleFontSize(12)
     },
     description2:{
         color:'#161719',
-        fontFamily: 'DMSans-Medium',
-        fontSize: scaleFontSize(15),
+        fontFamily: 'DMSans-Regular',
+        fontSize: scaleFontSize(14),
         letterSpacing: scaleFontSize(0.7)
     },
     description3:{

@@ -28,7 +28,10 @@ const SignUp = ({navigation})=>{
                 <View style={{height:'35%'}}>
                     <View style={style.topContainer}> 
 
-                    <Image source={require("../../assets/Questedlogo.png")} 
+
+                    <Image 
+                    style={style.image}
+                    source={require("../../assets/Questedlogo.png")} 
                     resizeMode="contain"
                     />
 
@@ -44,13 +47,14 @@ const SignUp = ({navigation})=>{
 
                     <Input 
                     type={3} 
-                    placeholder={'First & Last Name'} onChangeText={(value) => setFullName(value)}/>
+                    placeholder={'First & Last Name'} 
+                    onChangeText={(value) => setFullName(value)}/>
 
                     <Input 
                     keyboardType={'email-address'}
                     type={4} 
                     placeholder={'Email'}
-                    onChangeText={(value) => setEmail(value)}/>
+                    onChangeText={(value) => setEmail(value)}/>     
 
                     <Input 
                     keyboardType = {'numeric'}

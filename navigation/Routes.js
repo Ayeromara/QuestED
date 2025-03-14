@@ -6,4 +6,7 @@ export const Routes = {
     SingleCoursesItem: 'SingleCoursesItem',
     SignUP:'SignUP',
     Success:'Success',
+    LeaderBoard: 'LeaderBoard',
+    Courses: 'Courses',
+    Profile: 'Profile'
 };

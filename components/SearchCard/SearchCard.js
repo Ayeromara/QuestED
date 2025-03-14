@@ -7,17 +7,17 @@ import { horizontalScale } from "../../assets/styles/scaling";
 const SearchCard = (props) =>{
     return (
 
-        <View style={{marginHorizontal: horizontalScale(15)}}>
+        <View>
         <Pressable
         onPress={()=> {props.onPress(props.coursesItemId)}} 
         style={style.pressable}>
             <View style={style.inside}>
-                <View  style={style.Cardinfo}></View>
                 <View style={style.textContainer}>
                 <Text style={style.text}>{props.text}</Text>
                 <Text style={style.text2}>{props.text2}</Text>
                 <Text style={style.text3}>{props.text3}</Text>
                 </View>
+                <View  style={style.Cardinfo}></View>
             </View>
         </Pressable>
         </View>

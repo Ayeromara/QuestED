@@ -1,5 +1,5 @@
 import { Image, StyleSheet } from "react-native";
-import { horizontalScale, verticalScale } from "../../assets/styles/scaling";
+import { horizontalScale, scaleFontSize, verticalScale } from "../../assets/styles/scaling";
 
  const style = StyleSheet.create({
     body:{
@@ -10,23 +10,24 @@ import { horizontalScale, verticalScale } from "../../assets/styles/scaling";
     container:{
         backgroundColor: '#C8C9FF',
         width: horizontalScale(297),
-        height: verticalScale(140),
+        height: verticalScale(120),
         justifyContent:'space-between',
         flexDirection: 'row',
         alignItems:"center",
         borderRadius: 20,
-        paddingHorizontal: horizontalScale(10)
+        paddingHorizontal: horizontalScale(7)
     },
     image:{
-        width: verticalScale(120),
-        height: verticalScale(120),
-        borderRadius: 14,
+        width: verticalScale(110),
+        height: verticalScale(110),
+        borderRadius: scaleFontSize(14),
 
     },
     btn:{
-        height:'100%',
+        flex:1,
+        height:verticalScale(110),
         justifyContent:'flex-end',
-        marginBottom: horizontalScale(25)
+        marginBottom: horizontalScale(25),
     }
 
  })

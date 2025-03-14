@@ -13,7 +13,7 @@ const Badge = () =>{
             </View>
 
 
-                <View style={style.image}>
+                <View >
                     <Image source={require("../../assets/image.jpg")} 
                     resizeMode="contain"
                     style={style.image}

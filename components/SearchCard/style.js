@@ -5,46 +5,57 @@ const style = StyleSheet.create({
     pressable:{
         backgroundColor: '#FCFCFF',
         marginTop: verticalScale(15),
-        borderRadius: 15,
+        borderRadius: scaleFontSize(15),
         flexDirection: 'row',
-        padding: horizontalScale(15),
+        paddingHorizontal: horizontalScale(15),
+        paddingVertical: verticalScale(15),
         alignItems:'center',
+        width:horizontalScale(300),
+        height: verticalScale(85),
     },
     Cardinfo:{
         backgroundColor: '#FF8181',
-        borderRadius:20,
-        height: horizontalScale(80),
-        width: verticalScale(65),
+        borderRadius: scaleFontSize(15),
+        height: horizontalScale(75),
+        width: verticalScale(60),
     },
     inside:{
-        flex:1,
-        justifyContent: 'center',
-        justifyContent:'space-between',
         flexDirection: 'row',
         alignItems:"center",
-        gap: horizontalScale(13)
+        gap: horizontalScale(15),
+        width:horizontalScale(270),
+        height: verticalScale(75),
+
     
     },
     text:{
         fontFamily: 'DMSans-Medium',
-        fontSize:scaleFontSize(15),
+        fontSize:scaleFontSize(12),
         color: '#161719',
-    },
-    text3:{
-        color:'#C8C9FF'
+        width: horizontalScale(175),
+        height:verticalScale(32),
     },
     text2:{
         color:'#161719',
         fontFamily: 'DMSans-Bold',
-        fontSize: scaleFontSize(15)
+        fontSize: scaleFontSize(12),
+        width: horizontalScale(200),
+        height:verticalScale(16),
+    },
+
+    text3:{
+        color:'#C8C9FF',
+        fontSize: scaleFontSize(10),
+        width: horizontalScale(200),
+        height:verticalScale(15),
     },
 
     textContainer:{
         flexDirection: 'column',
         justifyContent:'space-between',
         alignItems:"left",
-        gap:verticalScale(5),
-        width: horizontalScale(205)
+        width: horizontalScale(185),
+        height:verticalScale(60),
     }
 
 })

@@ -16,6 +16,10 @@ const style = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center'
     },
+    image:{
+        height: verticalScale(80),
+        width:horizontalScale(150)
+    },
     error:{
         fontFamily:'DMSans-Medium',
         fontSize: scaleFontSize(16),

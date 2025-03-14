@@ -9,12 +9,17 @@ const style = StyleSheet.create({
     signupredir:{
         justifyContent:'center',
         flexDirection:'row',
-        marginTop: verticalScale(20)
+        marginTop: verticalScale(20),
+
     },
     topContainer:{
         flex:1,
         alignItems:'center',
-        justifyContent:'center'
+        justifyContent:'center',
+    },
+    image:{
+        height: verticalScale(80),
+        width:horizontalScale(162)
     },
     error:{
         fontFamily:'DMSans-Medium',

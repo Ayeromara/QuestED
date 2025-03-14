@@ -26,32 +26,34 @@ const SingleCoursesItem = ({navigation, route}) => {
                   <Text style={style.text}>Course Detail</Text>
                 </View>
 
-            </View>
+            </View >
 
-            <View style={style.header1}>
-              <View style={style.header}><Header type={3} title={coursesItemInformation.name}/>
-              </View>
-            </View>
+                  <View style={style.headercont}>
+                    <View style={style.header1}>
+                      <View style={style.header}><Header type={3} title={coursesItemInformation.name}/>
+                      </View>
+                    </View>
 
-            <View style={style.header1}>
-              <View style={style.header}>
-                <Header type={1} title={coursesItemInformation.coursesTitle}/>
-              </View>
+                    <View style={style.header1}>
+                      <View style={style.header}>
+                        <Header type={1} title={coursesItemInformation.coursesTitle}/>
+                      </View>
+                    </View>
+                </View>
             </View>
-         </View>
         </View>
 
         <View style={[globalStyle.backgroundWhiteCurve, {height:'60%'} ]}>
 
           <View style={style.bottomContainer}>
 
-            <Text style={style.description}>Description</Text>
+              <Text style={style.description}>Description</Text>
 
-            <Text style={style.description2}>{coursesItemInformation.description}</Text>
+              <Text style={style.description2}>{coursesItemInformation.description}</Text>
 
-            <Text style={style.description3}>{coursesItemInformation.lectures}</Text>
+              <Text style={style.description3}>{coursesItemInformation.lectures}</Text>
 
-            <Button title={'Start Learning'} type={2}/>
+              <Button title={'Start Learning'} type={2}/>
           </View>
 
         </View>

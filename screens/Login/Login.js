@@ -27,7 +27,9 @@ const Login = ({navigation})=>{
                 <View style={{height:'50%'}}>
                     <View style={style.topContainer}> 
 
-                    <Image source={require("../../assets/Questedlogo.png")} 
+                    <Image 
+                    style={style.image}
+                    source={require("../../assets/Questedlogo.png")} 
                     resizeMode="contain"
                     />
 

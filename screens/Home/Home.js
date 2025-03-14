@@ -44,7 +44,7 @@ const Home = ({navigation}) =>{
                 <View style={style.headertxtcontainer}>
                    
                     <Text style={style.headertxt}>Hello,</Text>
-                    <Header title={user.displayName + '👋'}/>
+                    <Header type={1} title={user.displayName + '👋'}/>
                 </View>
 
 
