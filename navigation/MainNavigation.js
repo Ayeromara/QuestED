@@ -11,6 +11,7 @@ import { faCirclePlay, faHouse, faPeopleRoof, faUser } from "@fortawesome/free-s
 import Courses from "../screens/Courses/Courses";
 import LeaderBoard from "../screens/LeaderBoard/LeaderBoard";
 import Profile from "../screens/Profile/Profile";
+import { verticalScale } from "../assets/styles/scaling";
 
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -47,7 +48,6 @@ const TabNavigator = () =>{
         tabBarStyle:{
             borderTopLeftRadius: 30,
             borderTopRightRadius: 30,
-            height: 70,
             alignItems:'center'
             }}}>
         <Tabs.Screen 

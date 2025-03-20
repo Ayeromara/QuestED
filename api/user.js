@@ -3,7 +3,7 @@ import auth from '@react-native-firebase/auth'
 export const createUser = async(fullName, email, password, matricNo) =>{
     try{
         const user = await auth().createUserWithEmailAndPassword(email, password);
-        await user.user.updateProfile({displayName: fullName});
+        await user.user.updateProfile({displayName: fullName, matric:matricNo});
         return user;
     }
     catch(error){
@@ -24,6 +24,7 @@ export const loginUser = async(email, password) =>{
             status:true,
             data: {
                 displayName:response.user.displayName,
+                matric:response.user.matricNo,
                 email: response.user.email,
                 token,
             },

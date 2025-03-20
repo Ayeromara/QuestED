@@ -19,7 +19,9 @@ const Home = ({navigation}) =>{
     const dispatch = useDispatch();
     const user = useSelector(state => state.user);
     const courses = useSelector(state => state.courses);
-
+ 
+    console.log(user)
+  
     const [coursesItems, setCoursesItems] = useState([]);
 
 
