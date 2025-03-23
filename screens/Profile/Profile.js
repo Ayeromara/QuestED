@@ -30,7 +30,7 @@ const Profile =({navigation}) =>{
                             />
                         
                         <Header type={3}title={user.displayName}/>
-                        <Text style={style.text}>{user.matric}</Text>
+                        <Text style={style.text}>ok</Text>
                 </View>
 
                 <View style={style.bigCont}>
