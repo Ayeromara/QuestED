@@ -47,12 +47,7 @@ const TabNavigator = () =>{
         headerShown: true, 
         tabBarStyle:{
             borderTopLeftRadius: 30,
-<<<<<<< HEAD
-            borderTopRightRadius: 30,
-            alignItems:'center'
-=======
             borderTopRightRadius: 30
->>>>>>> parent of e07fa35 (ok)
             }}}>
         <Tabs.Screen 
         name={Routes.Home} 

@@ -1,8 +1,24 @@
-import auth from '@react-native-firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { initializeApp } from "firebase/app";
+
+
+
+const firebaseConfig = {
+    apiKey: "AIzaSyB1ssEzRwmxt3-em5J7dy2Vb4MgXOFykXQ",
+    authDomain: "quested-44a4b.firebaseapp.com",
+    projectId: "quested-44a4b",
+    storageBucket: "quested-44a4b.appspot.com",
+    messagingSenderId: "361443685118",
+    appId: "1:361443685118:android:e8031a9ff4bd755c70abaf",
+  };
+  
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
 export const createUser = async(fullName, email, password, matricNo) =>{
     try{
-        const user = await auth().createUserWithEmailAndPassword(email, password);
+        const user = await createUserWithEmailAndPassword(auth, email, password);
         await user.user.updateProfile({displayName: fullName, matric:matricNo});
         return user;
     }
@@ -18,13 +34,13 @@ export const createUser = async(fullName, email, password, matricNo) =>{
 
 export const loginUser = async(email, password) =>{
     try{
-        const response = await auth().signInWithEmailAndPassword(email, password);
+        const response = await signInWithEmailAndPassword(auth, email, password);
         const token = await response.user.getIdToken();
         return{
             status:true,
             data: {
                 displayName:response.user.displayName,
-                matric:response.user.matricNo,
+                matric:response.user.matric,
                 email: response.user.email,
                 token,
             },
