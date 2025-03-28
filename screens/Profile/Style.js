@@ -42,6 +42,31 @@ const style = StyleSheet.create({
     },
     badge:{
         fontSize: 30
+    },
+    lowertxt1:{
+        fontSize:scaleFontSize(10),
+        fontFamily: 'DMSans-Regular',
+        color:'#C8C9FF'
+    },
+    lowertxt2:{
+        fontSize:scaleFontSize(14),
+        fontFamily: 'DMSans-Regular',
+        color:'#161719'
+    },
+    lowertxt22:{
+        fontSize:scaleFontSize(14),
+        fontFamily: 'DMSans-Bold',
+        color:'#6360FF'
+    },
+    row:{
+        flexDirection:'row',
+        justifyContent:'space-between'
+    },
+    bottom:{
+        marginHorizontal: horizontalScale(20),
+        marginVertical:verticalScale(20),
+        flexDirection:'column',
+        gap: verticalScale(15)
     }
 })
 

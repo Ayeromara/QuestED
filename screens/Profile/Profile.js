@@ -1,14 +1,20 @@
 import React from "react";
-import { Image, Text, View } from "react-native";
+import { Image, Pressable, Text, View } from "react-native";
 import globalStyle from "../../assets/styles/globalStyles";
 import style from "./Style";
 import BackButton from "../../components/BackButton/BackButton";
 import Header from "../../components/Header/Header";
 import { useSelector, useDispatch } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import {faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { resetToInitialState } from "../../redux/reducers/User";
+import { logOut } from "../../api/user";
+import { Routes } from "../../navigation/Routes";
 
 const Profile =({navigation}) =>{
 
         const user = useSelector(state => state.user);
+        const dispatch = useDispatch();
 
     return (
         <View  style={[globalStyle.backgroundPrimary, globalStyle.flex,]}>
@@ -30,7 +36,7 @@ const Profile =({navigation}) =>{
                             />
                         
                         <Header type={3}title={user.displayName}/>
-                        <Text style={style.text}>ok</Text>
+                        <Text style={style.text}>{user.email}</Text>
                 </View>
 
                 <View style={style.bigCont}>
@@ -56,6 +62,47 @@ const Profile =({navigation}) =>{
             
             
          <View style={[globalStyle.backgroundWhiteCurve, {height:'50%'}]}>
+
+            <View style={style.bottom}>
+                <Text style={style.lowertxt1}>Account Settings</Text>
+
+                <View style={style.row}>
+                    <Text style={style.lowertxt2}>Account Security</Text>
+                     <FontAwesomeIcon color="#C8C9FF" icon={faChevronRight}/>
+                </View>
+                <View style={style.row}>
+                    <Text style={style.lowertxt2}>Edit Account</Text>
+                     <FontAwesomeIcon color="#C8C9FF" icon={faChevronRight}/>
+                </View>
+                <View style={style.row}>
+                    <Text style={style.lowertxt2}>Learning Reminders</Text>
+                     <FontAwesomeIcon color="#C8C9FF" icon={faChevronRight}/>
+                </View>
+
+                <Text style={style.lowertxt1}>Support</Text>
+
+                <View style={style.row}>
+                    <Text style={style.lowertxt2}>About QuestED</Text>
+                     <FontAwesomeIcon color="#C8C9FF" icon={faChevronRight}/>
+                </View>
+                <View style={style.row}>
+                    <Text style={style.lowertxt2}>frequently asked questions</Text>
+                     <FontAwesomeIcon color="#C8C9FF" icon={faChevronRight}/>
+                </View>
+                <Pressable 
+                style={style.row}
+                onPress={async()=>{
+                    dispatch(resetToInitialState());
+                    await logOut();
+                }}>
+                    <Text style={style.lowertxt22}>Log Out</Text>
+                </Pressable>
+
+            </View>
+
+
+
+
 
         </View>
 

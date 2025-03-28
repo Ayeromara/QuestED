@@ -20,7 +20,6 @@ const Home = ({navigation}) =>{
     const user = useSelector(state => state.user);
     const { courses} = useSelector(state => state.courses);
      const [coursesItems, setCoursesItems] = useState([]);
-    console.log(courses)
   
 
 

@@ -20,7 +20,7 @@ export const NonAuthenticated = () =>{
     return(
         <Stack.Navigator 
         initialRouteName={Routes.Login}
-        screenOptions={{header: ()=> null, headerShown: true}}>
+        screenOptions={{header: ()=> null, headerShown: false}}>
             <Stack.Screen name={Routes.Login} component={Login} />
             <Stack.Screen name={Routes.SignUP} component={SignUp} />
             <Stack.Screen name={Routes.Success} component={Success} />
@@ -32,7 +32,7 @@ export const NonAuthenticated = () =>{
     return(
         <Stack.Navigator 
         initialRouteName={Routes.Home}
-        screenOptions={{header: ()=> null, headerShown: true}}>
+        screenOptions={{header: ()=> null, headerShown: false}}>
             <Stack.Screen name={Routes.SingleCoursesItem} component={SingleCoursesItem} />
             <Stack.Screen name={Routes.Home} component={TabNavigator} />
         </Stack.Navigator>

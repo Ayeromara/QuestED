@@ -1,6 +1,8 @@
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import firestore from '@react-native-firebase/firestore';
+import store from "../redux/store";
+import { updateToken } from "../redux/reducers/User";
 
 export const db = firestore();
 
@@ -20,7 +22,7 @@ const auth = getAuth(app);
 export const createUser = async(fullName, email, password, matricNo) =>{
     try{
         const user = await createUserWithEmailAndPassword(auth, email, password);
-        await user.user.updateProfile({displayName: fullName, matric:matricNo});
+        await user.user.updateProfile({displayName: fullName});
         return user;
     }
     catch(error){
@@ -41,7 +43,6 @@ export const loginUser = async(email, password) =>{
             status:true,
             data: {
                 displayName:response.user.displayName,
-                matric:response.user.matric,
                 email: response.user.email,
                 token,
             },
@@ -62,3 +63,7 @@ export const loginUser = async(email, password) =>{
     }
     
 }
+
+export const logOut = async () => {
+    await signOut(auth);
+  };
