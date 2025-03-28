@@ -1,7 +1,8 @@
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { initializeApp } from "firebase/app";
+import firestore from '@react-native-firebase/firestore';
 
-
+export const db = firestore();
 
 const firebaseConfig = {
     apiKey: "AIzaSyB1ssEzRwmxt3-em5J7dy2Vb4MgXOFykXQ",

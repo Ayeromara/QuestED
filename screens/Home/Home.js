@@ -1,14 +1,14 @@
 import React from "react";
 import style from "./style";
 import { useState,useEffect } from "react";
-import { SafeAreaView, View , Text, Image,} from "react-native";
+import { SafeAreaView, View , Text, Image, ActivityIndicator,} from "react-native";
 import globalStyle from "../../assets/styles/globalStyles";
 import Header from "../../components/Header/Header";
 import SearchCard from "../../components/SearchCard/SearchCard";
 import Badge from "../../components/Badge/Badge";
 import { useSelector, useDispatch } from "react-redux";
 import { ScrollView } from "react-native-gesture-handler";
-import { updateSelectedCoursesId } from "../../redux/reducers/Courses";
+import { fetchCourses, updateSelectedCoursesId } from "../../redux/reducers/Courses";
 import { Routes } from "../../navigation/Routes";
 
 
@@ -18,19 +18,21 @@ const Home = ({navigation}) =>{
 
     const dispatch = useDispatch();
     const user = useSelector(state => state.user);
-    const courses = useSelector(state => state.courses);
- 
-    console.log(user)
+    const { courses} = useSelector(state => state.courses);
+     const [coursesItems, setCoursesItems] = useState([]);
+    console.log(courses)
   
-    const [coursesItems, setCoursesItems] = useState([]);
+
 
 
     useEffect(()=>{
         const items = courses.items
           setCoursesItems(items);
     }, []);
-  
 
+    useEffect(() => {
+        dispatch(fetchCourses());
+    }, [dispatch]);
 
     return (
     <SafeAreaView style={[globalStyle.backgroundPrimary, globalStyle.flex,]}>
@@ -67,9 +69,9 @@ const Home = ({navigation}) =>{
 
                 <ScrollView showsVerticalScrollIndicator={false}>
 
-                    {coursesItems.length>0 &&(
+                    {courses && courses.length>0 &&(
                 <View style={style.coursesItemsContainer}>
-                {coursesItems.map(value => (
+                {courses.map(value => (
               <SearchCard
                     onPress= {selectedCoursesId=>{
                         dispatch(updateSelectedCoursesId(selectedCoursesId));
