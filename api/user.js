@@ -1,27 +1,11 @@
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { initializeApp } from "firebase/app";
-import firestore from '@react-native-firebase/firestore';
-import store from "../redux/store";
-import { updateToken } from "../redux/reducers/User";
+import auth from '@react-native-firebase/auth'
+import firestore, { getFirestore } from '@react-native-firebase/firestore';
 
-export const db = firestore();
-
-const firebaseConfig = {
-    apiKey: "AIzaSyB1ssEzRwmxt3-em5J7dy2Vb4MgXOFykXQ",
-    authDomain: "quested-44a4b.firebaseapp.com",
-    projectId: "quested-44a4b",
-    storageBucket: "quested-44a4b.appspot.com",
-    messagingSenderId: "361443685118",
-    appId: "1:361443685118:android:e8031a9ff4bd755c70abaf",
-  };
-  
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+const db = getFirestore();
 
 export const createUser = async(fullName, email, password, matricNo) =>{
     try{
-        const user = await createUserWithEmailAndPassword(auth, email, password);
+        const user = await auth().createUserWithEmailAndPassword(email, password);
         await user.user.updateProfile({displayName: fullName});
         return user;
     }
@@ -37,7 +21,7 @@ export const createUser = async(fullName, email, password, matricNo) =>{
 
 export const loginUser = async(email, password) =>{
     try{
-        const response = await signInWithEmailAndPassword(auth, email, password);
+        const response = await auth().signInWithEmailAndPassword(email, password);
         const token = await response.user.getIdToken();
         return{
             status:true,
@@ -49,7 +33,7 @@ export const loginUser = async(email, password) =>{
         }
     } catch(error){
         if(error.code === 'auth/wrong-password'){
-        return {status: false, error: 'please enter a correct password'};
+        return {status: false, error: 'please enter a correct password'}
         }
         else if (error.code === 'auth/user-not-found') {
             return {
@@ -58,10 +42,8 @@ export const loginUser = async(email, password) =>{
                 'The email you entered does not exist. Please create a new account.',
             };
         }
-        return {status: false, error: 'invalid credentials'};
-        
+        return {status: false, error: 'Something went wrong'};
     }
-    
 }
 
 export const logOut = async () => {

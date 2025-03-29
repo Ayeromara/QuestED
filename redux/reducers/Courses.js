@@ -1,10 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { db } from '../../api/user';
+import { collection, getDocs, query } from '@react-native-firebase/firestore';
 
 // Async thunk to fetch courses from Firestore
 export const fetchCourses = createAsyncThunk('Courses1/fetchCourses', async (_, { rejectWithValue }) => {
     try {
-        const snapshot = await db.collection('Courses1').get();
+
+      const q = query(collection(db,'Courses1'))
+        const snapshot = await getDocs(q)
         const courses = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         return courses;
     } catch (error) {
