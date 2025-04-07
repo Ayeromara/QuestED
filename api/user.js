@@ -1,7 +1,7 @@
 import auth from '@react-native-firebase/auth'
 import firestore, { getFirestore } from '@react-native-firebase/firestore';
 
-const db = getFirestore();
+export const db = getFirestore();
 
 export const createUser = async(fullName, email, password, matricNo) =>{
     try{

@@ -12,6 +12,8 @@ import Courses from "../screens/Courses/Courses";
 import LeaderBoard from "../screens/LeaderBoard/LeaderBoard";
 import Profile from "../screens/Profile/Profile";
 import { verticalScale } from "../assets/styles/scaling";
+import CourseContent from "../screens/CourseContent/CourseContent";
+import CourseDocument from "../screens/CourseDocument/CourseDocument";
 
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -34,6 +36,8 @@ export const NonAuthenticated = () =>{
         initialRouteName={Routes.Home}
         screenOptions={{header: ()=> null, headerShown: false}}>
             <Stack.Screen name={Routes.SingleCoursesItem} component={SingleCoursesItem} />
+            <Stack.Screen name={Routes.CourseContent} component={CourseContent} />
+            <Stack.Screen name={Routes.CourseDocument} component={CourseDocument} />
             <Stack.Screen name={Routes.Home} component={TabNavigator} />
         </Stack.Navigator>
     );

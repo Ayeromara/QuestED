@@ -2,37 +2,31 @@ import React from "react";
 import { Pressable, Text, View } from "react-native";
 import style from "./style";
 import PropTypes from "prop-types";
-import { horizontalScale } from "../../assets/styles/scaling";
 
-const SearchCard = (props) =>{
+
+const SectionCard = (props) =>{
     return (
 
-        <View>
+        <View style={style.cont}>
         <Pressable
         onPress={()=> {props.onPress(props.onPress())}} 
         style={style.pressable}>
             <View style={style.inside}>
-                <View style={style.textContainer}>
                 <Text style={style.text}>{props.text}</Text>
                 <Text style={style.text2}>{props.text2}</Text>
-                <Text style={style.text3}>{props.text3}</Text>
-                </View>
-                <View  style={style.Cardinfo}></View>
             </View>
         </Pressable>
         </View>
     )
 };
 
-SearchCard.default ={
+SectionCard.default ={
     onPress:()=>{},
 };
-SearchCard.propTypes ={
-    coursesItemId: PropTypes.number.isRequired,
+SectionCard.propTypes ={
     text: PropTypes.string.isRequired,
     text2: PropTypes.string.isRequired,
-    text3: PropTypes.string.isRequired,
     onPress: PropTypes.func
 };
 
-export default SearchCard;
+export default SectionCard;

@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./style";
 import { useState,useEffect } from "react";
-import { SafeAreaView, View , Text, Image, ActivityIndicator,} from "react-native";
+import { SafeAreaView, View , Text, Image, ActivityIndicator, FlatList,} from "react-native";
 import globalStyle from "../../assets/styles/globalStyles";
 import Header from "../../components/Header/Header";
 import SearchCard from "../../components/SearchCard/SearchCard";
@@ -15,23 +15,9 @@ import { Routes } from "../../navigation/Routes";
 
 const Home = ({navigation}) =>{
 
-
-    const dispatch = useDispatch();
     const user = useSelector(state => state.user);
     const { courses} = useSelector(state => state.courses);
-     const [coursesItems, setCoursesItems] = useState([]);
-  
 
-
-
-    useEffect(()=>{
-        const items = courses.items
-          setCoursesItems(items);
-    }, []);
-
-    useEffect(() => {
-        dispatch(fetchCourses());
-    }, [dispatch]);
 
     return (
     <SafeAreaView style={[globalStyle.backgroundPrimary, globalStyle.flex,]}>
@@ -64,29 +50,28 @@ const Home = ({navigation}) =>{
 
                 <View style={style.recommend}>
                 <Header title={'Select Course'} type={2}/>
-                </View>
+                </View >
 
-                <ScrollView showsVerticalScrollIndicator={false}>
 
-                    {courses && courses.length>0 &&(
-                <View style={style.coursesItemsContainer}>
-                {courses.map(value => (
-              <SearchCard
-                    onPress= {selectedCoursesId=>{
-                        dispatch(updateSelectedCoursesId(selectedCoursesId));
-                         
-                        navigation.navigate(Routes.SingleCoursesItem)
-                    }}
-                    coursesItemId={value.coursesItemId}
-                    key={value.coursesItemId}
-                    text={value.name}
-                    text2={value.coursesTitle}
-                    text3={value.year}
-              />
-            ))}
-                </View>
-                    )}
-                </ScrollView>
+                    {courses && courses.length>0 &&
+                        <FlatList 
+                        showsVerticalScrollIndicator ={false}
+                        data={courses}
+                        keyExtractor={item => item.id}
+                        renderItem={({ item }) => (
+                            <View style={style.coursesItemsContainer}>
+                            <SearchCard 
+                            onPress= {()=>navigation.navigate(Routes.SingleCoursesItem, { course: item })
+                            }
+                            text={item.name}
+                            text2={item.coursesTitle}
+                            text3={item.year}
+                      />
+                      </View>
+                        )}
+                      />}
+
+
 
 
             </View>

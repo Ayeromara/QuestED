@@ -8,5 +8,8 @@ export const Routes = {
     Success:'Success',
     LeaderBoard: 'LeaderBoard',
     Courses: 'Courses',
-    Profile: 'Profile'
+    Profile: 'Profile',
+    CourseContent: 'CourseContent',
+    CourseDocument:'CourseDocument'
+
 };
