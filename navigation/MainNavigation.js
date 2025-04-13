@@ -11,9 +11,11 @@ import { faCirclePlay, faHouse, faPeopleRoof, faUser } from "@fortawesome/free-s
 import Courses from "../screens/Courses/Courses";
 import LeaderBoard from "../screens/LeaderBoard/LeaderBoard";
 import Profile from "../screens/Profile/Profile";
-import { verticalScale } from "../assets/styles/scaling";
 import CourseContent from "../screens/CourseContent/CourseContent";
-import CourseDocument from "../screens/CourseDocument/CourseDocument";
+import QuizWelcome from "../screens/QuizWelcome/QuizWelcome";
+import Quiz from "../screens/Quiz/Quiz";
+import Result from "../screens/Result/Result";
+
 
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -37,7 +39,9 @@ export const NonAuthenticated = () =>{
         screenOptions={{header: ()=> null, headerShown: false}}>
             <Stack.Screen name={Routes.SingleCoursesItem} component={SingleCoursesItem} />
             <Stack.Screen name={Routes.CourseContent} component={CourseContent} />
-            <Stack.Screen name={Routes.CourseDocument} component={CourseDocument} />
+            <Stack.Screen name={Routes.QuizWelcome} component={QuizWelcome} />
+            <Stack.Screen name={Routes.Quiz} component={Quiz} />
+            <Stack.Screen name={Routes.Result} component={Result} />
             <Stack.Screen name={Routes.Home} component={TabNavigator} />
         </Stack.Navigator>
     );

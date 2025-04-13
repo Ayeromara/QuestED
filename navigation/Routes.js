@@ -10,6 +10,8 @@ export const Routes = {
     Courses: 'Courses',
     Profile: 'Profile',
     CourseContent: 'CourseContent',
-    CourseDocument:'CourseDocument'
+    QuizWelcome:'QuizWelcome',
+    Quiz:'Quiz',
+    Result:'Result'
 
 };

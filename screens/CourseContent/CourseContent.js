@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Linking } from "react-native";
 import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import { db } from "../../api/user";
 import globalStyle from "../../assets/styles/globalStyles";
@@ -7,10 +8,12 @@ import style from "./style";
 import BackButton from "../../components/BackButton/BackButton";
 import { collection, getDocs, query } from '@react-native-firebase/firestore';
 
-
+const [courseID, setCourseID] = useState('')
 const CourseContent = ({ route, navigation }) => {
   const { courseId } = route.params;
+  setCourseID(courseId)
   const [sections, setSections] = useState([]);
+
 
 
   const getSections = async () => {
@@ -40,7 +43,7 @@ const CourseContent = ({ route, navigation }) => {
         
       <View style={style.CDetail}>
 
-            <BackButton onPress={()=> navigation.goBack()}/>
+            <BackButton onPress={()=> navigation.navigate('Home')}/>
             
             <View>
                 <Text style={style.text}>Course Content</Text>
@@ -59,32 +62,42 @@ const CourseContent = ({ route, navigation }) => {
 
                             <><SectionCard
                           onPress={() => null}
+                          type={1}
                           text={item.section} 
                           text2 ={'3 Content'}
                           />
+
+                          
                           
                           <SectionCard
-                              onPress={() => navigation.navigate("VideoPlayer", { videoUrl: item.videoUrl, sectionId: item.id, courseId })}
+                              onPress={() => Linking.openURL(item.videoURL)}
                               text={item.title}
                               text2 ={'Video'}
+                              
                               />
 
-                          <SectionCard
-                              onPress={() => navigation.navigate("Quiz", { sectionId: item.id, courseId })}
-                              text={'Quiz'} 
-                              text2 ={'Earn Points'}
-                              />
-                          <SectionCard
-                              onPress={() => navigation.navigate("CourseDocument", { section: item })}
+                              
+
+                            <SectionCard
+                              onPress={() => Linking.openURL(item.Document)}
                               text={'Section Material'} 
                               text2 ={'Text Document '}
                               />
+                              
+                          <SectionCard
+                              onPress={() => navigation.navigate("QuizWelcome", { sectionId: item.id, courseId })}
+                              text={'Quiz'} 
+                              text2 ={'Earn Points'}
+                              />
+
                               </>
 
 
                   )} />
+                
           </View></>
   );
 };
 
+export const CourseID= courseID;
 export default CourseContent;

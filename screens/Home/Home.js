@@ -7,23 +7,25 @@ import Header from "../../components/Header/Header";
 import SearchCard from "../../components/SearchCard/SearchCard";
 import Badge from "../../components/Badge/Badge";
 import { useSelector, useDispatch } from "react-redux";
-import { ScrollView } from "react-native-gesture-handler";
+import { Pressable, ScrollView } from "react-native-gesture-handler";
 import { fetchCourses, updateSelectedCoursesId } from "../../redux/reducers/Courses";
 import { Routes } from "../../navigation/Routes";
+import { fetchUserdata } from "../../redux/reducers/authSlice";
 
 
 
 const Home = ({navigation}) =>{
-
+    
     const user = useSelector(state => state.user);
-    const { courses} = useSelector(state => state.courses);
-
+    const {courses} = useSelector(state => state.courses);
 
     return (
     <SafeAreaView style={[globalStyle.backgroundPrimary, globalStyle.flex,]}>
 
         <View style={[ style.okay,{height:'15%',}]}>
-            <View style={style.header}>
+            <Pressable
+            onPress={()=>navigation.navigate(Routes.Profile)} 
+             style={style.header}>
 
             <Image source={require("../../assets/ProfileImage.jpg")} 
                 resizeMode='contain'
@@ -38,7 +40,7 @@ const Home = ({navigation}) =>{
 
 
 
-            </View>
+            </Pressable>
         </View>
 
         <View style={[globalStyle.backgroundWhiteCurve,{height:'85%'}]}>

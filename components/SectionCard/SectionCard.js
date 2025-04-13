@@ -5,15 +5,41 @@ import PropTypes from "prop-types";
 
 
 const SectionCard = (props) =>{
+
+      const styleToApply = () =>{
+        switch (props.type){
+            case 1:
+                return style.back
+            default:
+                return style.pressable
+        }
+    }
+      const styleToApply1 = () =>{
+        switch (props.type){
+            case 1:
+                return style.text22
+            default:
+                return style.text2
+        }
+    }
+      const styleToApply2 = () =>{
+        switch (props.type){
+            case 1:
+                return style.text1
+            default:
+                return style.text
+        }
+    }
+
     return (
 
         <View style={style.cont}>
         <Pressable
         onPress={()=> {props.onPress(props.onPress())}} 
-        style={style.pressable}>
+        style={styleToApply()}>
             <View style={style.inside}>
-                <Text style={style.text}>{props.text}</Text>
-                <Text style={style.text2}>{props.text2}</Text>
+                <Text style={styleToApply2()}>{props.text}</Text>
+                <Text style={styleToApply1()}>{props.text2}</Text>
             </View>
         </Pressable>
         </View>

@@ -9,7 +9,7 @@ const globalStyle = StyleSheet.create({
         flex: 1
     },
     backgroundwhite:{
-        backgroundColor:'F1F1FA'
+        backgroundColor:'white'
     },
     backgroundWhiteCurve:{
         backgroundColor: '#F1F1FA',

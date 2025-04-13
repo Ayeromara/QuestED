@@ -65,7 +65,7 @@ const Login = ({navigation})=>{
                     else {
                         setError('')
                         dispatch(logIn(user.data))
-                        navigation.navigate(Routes.Home)
+                        navigation.navigate('Home')
                     }
                 }}
                 type={2} 

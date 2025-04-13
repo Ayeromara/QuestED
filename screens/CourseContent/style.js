@@ -17,6 +17,7 @@ const style = StyleSheet.create({
         fontSize:scaleFontSize(14)
     },
 
+
 });
 
 export default style;

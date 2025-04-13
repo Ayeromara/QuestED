@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userReducer from "./reducers/User";
-import categoryReducer from "./reducers/Categories";
+import leaderboardReducer from "./reducers/Leaderboard";
 import coursesReducer from "./reducers/Courses";
 import {logger} from 'redux-logger';
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -11,6 +11,7 @@ const rootReducer = combineReducers({
     user: userReducer,
     // categories: categoryReducer,
     courses: coursesReducer,
+    leaderboard: leaderboardReducer,
 })
 
 const configuration ={

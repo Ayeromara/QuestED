@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Image, Pressable, Text, View } from "react-native";
 import globalStyle from "../../assets/styles/globalStyles";
 import style from "./Style";
@@ -10,11 +10,33 @@ import {faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { resetToInitialState } from "../../redux/reducers/User";
 import { logOut } from "../../api/user";
 import { Routes } from "../../navigation/Routes";
+import { db } from "../../api/user";
+import auth from '@react-native-firebase/auth'
+import { query,collection,getDoc,doc,getDocs } from "@react-native-firebase/firestore";
 
 const Profile =({navigation}) =>{
 
         const user = useSelector(state => state.user);
         const dispatch = useDispatch();
+
+        const [points, setPoints] = useState(0);
+
+        useEffect(() => {
+          const userId = auth().currentUser?.uid;
+          const unsubscribe = db
+            .collection('users')
+            .doc(userId)
+            .onSnapshot(documentSnapshot => {
+              const userData = documentSnapshot.data();
+              if (userData) {
+                setPoints(userData.points || 0);
+              }
+            });
+      
+          // Cleanup listener when screen unmounts
+          return () => unsubscribe();
+        }, []);
+
 
     return (
         <View  style={[globalStyle.backgroundPrimary, globalStyle.flex,]}>
@@ -42,14 +64,10 @@ const Profile =({navigation}) =>{
                 <View style={style.bigCont}>
 
                         <View style={style.smallCont}>
-                            <Header title={102} type={1}/>
+                            <Header title={points} type={1}/>
                             <Text style={style.text}>Points</Text>
                         </View>
                         
-                        <View style={style.smallCont}>
-                            <Text style={style.badge}>🏅</Text>
-                        </View>
-
                         <View style={style.smallCont}>
                             <Header title={102} type={1}/>
                             <Text style={style.text}>Ranking</Text>
