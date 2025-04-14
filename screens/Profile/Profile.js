@@ -21,8 +21,13 @@ const Profile =({navigation}) =>{
 
         const [points, setPoints] = useState(0);
 
+        const { leaderboard, loading, error } = useSelector((state) => state.leaderboard);
+
+        const userId = auth().currentUser?.uid;
+
+        const currentUserData = leaderboard.find(user => user.id === userId);
+
         useEffect(() => {
-          const userId = auth().currentUser?.uid;
           const unsubscribe = db
             .collection('users')
             .doc(userId)
@@ -69,7 +74,7 @@ const Profile =({navigation}) =>{
                         </View>
                         
                         <View style={style.smallCont}>
-                            <Header title={102} type={1}/>
+                            <Header title={currentUserData.rank} type={1}/>
                             <Text style={style.text}>Ranking</Text>
                         </View>
 
