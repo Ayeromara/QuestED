@@ -1,5 +1,5 @@
 import React from "react";
-import { Pressable, Text, View } from "react-native";
+import { Pressable, Text, TouchableOpacity, View } from "react-native";
 import style from "./style";
 import PropTypes from "prop-types";
 
@@ -34,14 +34,14 @@ const SectionCard = (props) =>{
     return (
 
         <View style={style.cont}>
-        <Pressable
+        <TouchableOpacity
         onPress={()=> {props.onPress(props.onPress())}} 
         style={styleToApply()}>
             <View style={style.inside}>
                 <Text style={styleToApply2()}>{props.text}</Text>
                 <Text style={styleToApply1()}>{props.text2}</Text>
             </View>
-        </Pressable>
+        </TouchableOpacity>
         </View>
     )
 };

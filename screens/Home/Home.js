@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./style";
 import { useState,useEffect } from "react";
-import { SafeAreaView, View , Text, Image, ActivityIndicator, FlatList,} from "react-native";
+import { SafeAreaView, View , Text, Image, ActivityIndicator, FlatList, TouchableOpacity,} from "react-native";
 import globalStyle from "../../assets/styles/globalStyles";
 import Header from "../../components/Header/Header";
 import SearchCard from "../../components/SearchCard/SearchCard";
@@ -23,8 +23,7 @@ const Home = ({navigation}) =>{
     <SafeAreaView style={[globalStyle.backgroundPrimary, globalStyle.flex,]}>
 
         <View style={[ style.okay,{height:'15%',}]}>
-            <Pressable
-            onPress={()=>navigation.navigate(Routes.Profile)} 
+            <View
              style={style.header}>
 
             <Image source={require("../../assets/ProfileImage.jpg")} 
@@ -35,12 +34,15 @@ const Home = ({navigation}) =>{
                 <View style={style.headertxtcontainer}>
                    
                     <Text style={style.headertxt}>Hello,</Text>
+                    <TouchableOpacity 
+                    onPress={()=>navigation.navigate(Routes.Profile)} >
                     <Header type={1} title={user.displayName.charAt(0).toUpperCase() + user.displayName.slice(1) + '👋'}/>
+                    </TouchableOpacity>
                 </View>
 
 
 
-            </Pressable>
+            </View>
         </View>
 
         <View style={[globalStyle.backgroundWhiteCurve,{height:'85%'}]}>

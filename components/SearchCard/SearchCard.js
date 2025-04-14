@@ -1,5 +1,5 @@
 import React from "react";
-import { Pressable, Text, View } from "react-native";
+import { Pressable, Text, TouchableOpacity, View } from "react-native";
 import style from "./style";
 import PropTypes from "prop-types";
 import { horizontalScale } from "../../assets/styles/scaling";
@@ -8,7 +8,8 @@ const SearchCard = (props) =>{
     return (
 
         <View>
-        <Pressable
+        <TouchableOpacity
+        activeOpacity={0.7}
         onPress={()=> {props.onPress(props.onPress())}} 
         style={style.pressable}>
             <View style={style.inside}>
@@ -19,7 +20,7 @@ const SearchCard = (props) =>{
                 </View>
                 <View  style={style.Cardinfo}></View>
             </View>
-        </Pressable>
+        </TouchableOpacity>
         </View>
     )
 };

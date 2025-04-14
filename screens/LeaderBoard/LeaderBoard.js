@@ -1,41 +1,82 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Image, Pressable, Text, View, FlatList, ActivityIndicator } from "react-native";
+import { Image, Pressable, Text, View, FlatList, ActivityIndicator, TouchableOpacity } from "react-native";
 import style from "./style";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faArrowLeft, faCrown } from "@fortawesome/free-solid-svg-icons";
-import { collection, getDocs, query, orderBy } from "firebase/firestore";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { db } from "../../api/user";
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchLeaderboard } from "../../redux/reducers/Leaderboard";
 import auth from '@react-native-firebase/auth'
+import { collection, getDocs, orderBy, query } from "@react-native-firebase/firestore";
+
 
 const LeaderBoard =({navigation}) =>{
 
-const dispatch = useDispatch();
-const { leaderboard, loading, error } = useSelector((state) => state.leaderboard);
+
+const [leaderboard, setLeaderboard] = useState([]);
+const [loading, setLoading] = useState(true);
+const [currentUserData, setCurrentUserData] = useState(null);
+
 
 const topThree = leaderboard.slice(0, 3);
 const rest = leaderboard.slice(3);
 
 
 
-const userId = auth().currentUser?.uid;
-
-const currentUserData = leaderboard.find(user => user.id === userId);
-
-
-
 useEffect(() => {
-    dispatch(fetchLeaderboard());
-  }, [dispatch]);
+    const userId = auth().currentUser?.uid;
+
+    const fetchLeaderboard = async () => {
+      try {
+        const q = query(collection(db,'users'), orderBy('points', 'desc'));
+        const snapshot = await getDocs(q)
+        const leaderboarddata = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+
+        }));
+
+            // Sort users by points descending
+    const sorted = leaderboarddata.sort((a, b) => (b.points || 0) - (a.points || 0));
+
+    // Assign rank to each user
+    const ranked = sorted.map((user, index) => ({
+      ...user,
+      rank: index + 1, // 1-based rank
+    }));
+
+        setLeaderboard(ranked)
+
+
+        // Find the current user's rank and data
+        const currentUserdata = ranked.find(user => user.id === userId);
+        setCurrentUserData(currentUserdata)
+
+        setLoading(false);
+      } catch (error) {
+        const realError = error instanceof Error ? error : new Error(JSON.stringify(error));
+        console.error('Error fetching leaderboard:', realError);
+        setLoading(false);
+      }
+    };
+
+
+
+    fetchLeaderboard();
+  }, []);
+
+
+console.log(currentUserData)
+
+
+
+
+
 
   if (loading) return 
   (<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <ActivityIndicator size="large" color="#000" />
         </View>)
-  if (error) return <Text>Error: {error}</Text>;
+
 
 
 
@@ -64,16 +105,17 @@ const renderItem = ({ item }) => (
 
         <View style={style.topCont}>
             <View style={style.backCont}>
-                <Pressable 
+                <TouchableOpacity 
                 onPress={()=> navigation.goBack()}
                 style={style.backIcon}>
                     <FontAwesomeIcon color="#4F4F4F" icon={faArrowLeft}/>
-                </Pressable>
+                </TouchableOpacity>
 
                 <View style={style.leadTxt}>
                     <Text style={style.text}>Leaderboard</Text>
                 </View>
             </View>
+            
 
             <View>
                         <View style={style.children4}>
@@ -148,6 +190,7 @@ const renderItem = ({ item }) => (
                 </View>
 
             <FlatList
+            showsVerticalScrollIndicator={false}
             data={rest}
             keyExtractor={item => item.id}
             renderItem={renderItem}

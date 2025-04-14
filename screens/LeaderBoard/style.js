@@ -124,12 +124,12 @@ const style = StyleSheet.create({
     },
     bottomCont:{
         backgroundColor:'#C8C9FF',
-        height:'100%',
+        height:'77%',
         borderTopRightRadius:30,
         borderTopLeftRadius:30,
         flexDirection:'column',
         alignItems:'center',
-        paddingTop:20
+        paddingVertical:10
         
     },
     topCont:{

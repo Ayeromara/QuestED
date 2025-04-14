@@ -30,14 +30,15 @@ const Button = (props) =>{
     return(
 
         <View style={style.btnContainer}>
-        <TouchableOpacity>
-        <Pressable 
+        <View>
+        <TouchableOpacity 
+        activeOpacity={0.6}
         onPress={()=> props.onPress()} 
         disabled={props.isDisabled} 
         style={[style1ToApply(), props.isDisabled && style.disabled]}>
             <Text style={styleToApply()}>{props.title}</Text>
-        </Pressable>
         </TouchableOpacity>
+        </View>
         </View>
 
     );

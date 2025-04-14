@@ -1,7 +1,6 @@
 import { initializeApp } from '@react-native-firebase/app';
 import auth from '@react-native-firebase/auth'
 import firestore, { getFirestore } from '@react-native-firebase/firestore';
-import { CourseID } from '../screens/CourseContent/CourseContent';
 
 
 
@@ -21,7 +20,7 @@ const firebaseConfig = {
 
 
 
-export const createUser = async(fullName, email, password, matricNo) =>{
+export const createUser = async(fullName, email, password) =>{
     try{
         const user = await auth().createUserWithEmailAndPassword(email, password);
         await user.user.updateProfile({displayName: fullName})
@@ -41,7 +40,6 @@ export const createUser = async(fullName, email, password, matricNo) =>{
         points: 0,
         completedCourses: [],
         createdAt: firestore.FieldValue.serverTimestamp(),
-        startedCourses: firestore.FieldValue.arrayUnion(CourseID)
         });
         return user
 

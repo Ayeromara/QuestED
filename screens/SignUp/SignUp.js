@@ -100,11 +100,11 @@ const SignUp = ({navigation})=>{
 
 
 
-                <Pressable  onPress={()=>{navigation.navigate(Routes.Login)}}>
+                <TouchableOpacity  onPress={()=>{navigation.navigate(Routes.Login)}}>
                         <View style={style.signupredir}>
                     <Header type={4} title={"Alreadys have an account?"}/>
                     </View>
-                </Pressable>
+                </TouchableOpacity>
 
                 </View>
                 </View>

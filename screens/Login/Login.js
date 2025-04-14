@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Image, Pressable, SafeAreaView, View, Text} from "react-native";
+import { Image, Pressable, SafeAreaView, View, Text, TouchableOpacity} from "react-native";
 import style from "./style";
 import globalStyle from "../../assets/styles/globalStyles";
 import Input from "../../components/Input/Input";
@@ -75,11 +75,11 @@ const Login = ({navigation})=>{
 
 
 
-                <Pressable onPress={()=>{navigation.navigate(Routes.SignUP)}}>
+                <TouchableOpacity onPress={()=>{navigation.navigate(Routes.SignUP)}}>
                         <View style={style.signupredir}>
                     <Header type={4} title={"Don't have an account?"}/>
                     </View>
-                </Pressable>
+                </TouchableOpacity>
 
 
                 </View>
