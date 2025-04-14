@@ -20,7 +20,6 @@ const Quiz = ({ navigation,route }) => {
     const [currentQuestionIndex, setcurrentQuestionIndex] = useState(0);
 
     const progress = [currentQuestionIndex + 1] / quiz.length;
-    console.log(userData)
 
     const userId = auth().currentUser?.uid;
 

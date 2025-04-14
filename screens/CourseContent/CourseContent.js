@@ -8,11 +8,12 @@ import style from "./style";
 import BackButton from "../../components/BackButton/BackButton";
 import { collection, getDocs, query } from '@react-native-firebase/firestore';
 
-const [courseID, setCourseID] = useState('')
+
 const CourseContent = ({ route, navigation }) => {
   const { courseId } = route.params;
-  setCourseID(courseId)
   const [sections, setSections] = useState([]);
+
+
 
 
 
@@ -26,6 +27,8 @@ const CourseContent = ({ route, navigation }) => {
         ...doc.data()
       }));
       setSections(sections)
+      
+      
 
     } catch (error) {
       console.error("Error fetching sections:", error);
@@ -37,7 +40,9 @@ const CourseContent = ({ route, navigation }) => {
     getSections();
   },[]);
 
+  
   return (
+    
     <>
       <View style={[globalStyle.backgroundPrimary, globalStyle.backgroundPrimary, {height:'9%'}]}>
         
@@ -99,5 +104,6 @@ const CourseContent = ({ route, navigation }) => {
   );
 };
 
-export const CourseID= courseID;
+
+
 export default CourseContent;
