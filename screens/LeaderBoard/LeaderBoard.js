@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Image, Pressable, Text, View, FlatList } from "react-native";
+import { Image, Pressable, Text, View, FlatList, ActivityIndicator } from "react-native";
 import style from "./style";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faArrowLeft, faCrown } from "@fortawesome/free-solid-svg-icons";
@@ -31,7 +31,10 @@ useEffect(() => {
     dispatch(fetchLeaderboard());
   }, [dispatch]);
 
-  if (loading) return <Text>Loading...</Text>;
+  if (loading) return 
+  (<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <ActivityIndicator size="large" color="#000" />
+        </View>)
   if (error) return <Text>Error: {error}</Text>;
 
 

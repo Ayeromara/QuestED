@@ -62,7 +62,7 @@ const Profile =({navigation}) =>{
                         style={style.image}
                             />
                         
-                        <Header type={3}title={user.displayName}/>
+                        <Header type={3}title={user.displayName.charAt(0).toUpperCase() + user.displayName.slice(1)}/>
                         <Text style={style.text}>{user.email}</Text>
                 </View>
 

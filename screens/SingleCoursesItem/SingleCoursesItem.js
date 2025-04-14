@@ -7,10 +7,27 @@ import BackButton from '../../components/BackButton/BackButton';
 import Header from '../../components/Header/Header';
 import Button from '../../components/Button/Button';
 import { Routes } from '../../navigation/Routes';
+import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 
 const SingleCoursesItem = ({navigation, route}) => {
 
   const { course } = route.params;
+
+  const handleStartLearning = async (course) => {
+    const userId = auth().currentUser?.uid;
+    try {
+      const userRef = firestore().collection('users').doc(userId);
+  
+      await userRef.set({
+        startedCourses: firestore.FieldValue.arrayUnion(course),
+      }, { merge: true });
+  
+      console.log('Course added to started courses');
+    } catch (error) {
+      console.error('Error adding course to startedCourses:', error);
+    }
+  };
 
 
   return (
@@ -54,7 +71,11 @@ const SingleCoursesItem = ({navigation, route}) => {
 
               <Text style={style.description3}>{course.lectures}</Text>
 
-              <Button title={'Start Learning'} type={2} onPress={() => navigation.navigate(Routes.CourseContent, { courseId: course.id })}/>
+              <Button title={'Start Learning'} type={2} onPress={() => 
+                navigation.navigate(Routes.CourseContent, { courseId: course.id },
+                  handleStartLearning(course.id)
+
+                )}/>
           </View>
 
         </View>

@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./style";
-import { Text, View, Image} from "react-native";
+import { Text, View, Image, Alert} from "react-native";
 import Button from "../Button/Button";
 
 const Badge = () =>{
@@ -9,7 +9,19 @@ const Badge = () =>{
             <View style={style.container}>
 
             <View style={style.btn}>
-                <Button title={'Get Started'} type={1}/>
+                <Button
+                onPress={() => {
+                    Alert.alert(
+                      'Start Learning',          // Title
+                      'Select a Course Bellow.',    // Message
+                      [
+                        { text: 'Cancel', style: 'cancel' },
+                      ],
+                      { cancelable: true }
+                    );
+                  }}
+                 title={'Get Started'} 
+                 type={1}/>
             </View>
 
 

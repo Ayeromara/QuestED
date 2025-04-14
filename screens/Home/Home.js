@@ -35,7 +35,7 @@ const Home = ({navigation}) =>{
                 <View style={style.headertxtcontainer}>
                    
                     <Text style={style.headertxt}>Hello,</Text>
-                    <Header type={1} title={user.displayName + '👋'}/>
+                    <Header type={1} title={user.displayName.charAt(0).toUpperCase() + user.displayName.slice(1) + '👋'}/>
                 </View>
 
 
