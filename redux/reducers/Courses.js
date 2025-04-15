@@ -18,7 +18,10 @@ export const fetchCourses = createAsyncThunk('Courses1/fetchCourses', async (_, 
 const initialState = {
   courses:[],
   selectedCoursesInformation: null,
-  selectedCoursesId: null
+  selectedCoursesId: null,
+  loading: false,
+  error: null,
+
 };
 
 

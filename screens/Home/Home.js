@@ -19,7 +19,7 @@ const Home = ({navigation}) =>{
     const dispatch = useDispatch();
 
     const user = useSelector(state => state.user);
-    const {courses} = useSelector(state => state.courses);
+    const {courses, loading, error} = useSelector(state => state.courses);
 
 
     console.log(courses)
@@ -27,6 +27,14 @@ const Home = ({navigation}) =>{
     useEffect(() => {
         dispatch(fetchCourses());
       }, [dispatch]);
+
+      if (loading) return (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+              <ActivityIndicator size="large" color="#000" />
+            </View>
+          );
+          
+      if (error) return <Text>Error: {error}</Text>;
 
     return (
     <SafeAreaView style={[globalStyle.backgroundPrimary, globalStyle.flex,]}>
