@@ -16,8 +16,17 @@ import { fetchUserdata } from "../../redux/reducers/authSlice";
 
 const Home = ({navigation}) =>{
     
+    const dispatch = useDispatch();
+
     const user = useSelector(state => state.user);
     const {courses} = useSelector(state => state.courses);
+
+
+    console.log(courses)
+
+    useEffect(() => {
+        dispatch(fetchCourses());
+      }, [dispatch]);
 
     return (
     <SafeAreaView style={[globalStyle.backgroundPrimary, globalStyle.flex,]}>
