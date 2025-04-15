@@ -104,7 +104,9 @@ const Quiz = ({ navigation,route }) => {
             {quiz && quiz.length > 0 ? (
                 <>
                 <View style={style.header}>
-                                <Text style={style.headertxt}>{quiz[currentQuestionIndex].question}</Text></View>
+                                <Text style={style.headertxt}>{quiz[currentQuestionIndex].question}</Text>
+                </View>
+                
                 {quiz[currentQuestionIndex].options.map((option, index) => (
                     <Pressable 
                     onPress={()=> handleOptionPress(option)}

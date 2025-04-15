@@ -38,9 +38,8 @@ const style = StyleSheet.create({
     header:{
         marginTop: verticalScale(30),
         width: horizontalScale(306),
-        height:verticalScale(66),
         flexDirection:'row',
-        alignItems:'center'
+        marginBottom:verticalScale(20)
     },
     ansCont:{
         width: horizontalScale(320),

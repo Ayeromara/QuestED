@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Linking } from "react-native";
+import { ActivityIndicator, Linking } from "react-native";
 import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import { db } from "../../api/user";
 import globalStyle from "../../assets/styles/globalStyles";
@@ -7,13 +7,15 @@ import SectionCard from "../../components/SectionCard/SectionCard";
 import style from "./style";
 import BackButton from "../../components/BackButton/BackButton";
 import { collection, getDocs, query } from '@react-native-firebase/firestore';
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
 
 const CourseContent = ({ route, navigation }) => {
   const { courseId } = route.params;
   const [sections, setSections] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-
+  console.log(sections)
 
 
 
@@ -32,6 +34,8 @@ const CourseContent = ({ route, navigation }) => {
 
     } catch (error) {
       console.error("Error fetching sections:", error);
+    }finally {
+      setLoading(false);
     }
   };
 
@@ -57,10 +61,14 @@ const CourseContent = ({ route, navigation }) => {
       </View>
       
       
-      <View>
-        
+      <View style={{height:'90%'}} >
+      {loading ? (
+  <><ActivityIndicator size="large" color="#0000ff" /><View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <ActivityIndicator size="large" color="#000" />
+          </View></>) : (
               <FlatList
                   data={sections}
+                  showsVerticalScrollIndicator={false}
                   keyExtractor={item => item.id}
                   renderItem={({ item }) => (
 
@@ -98,7 +106,16 @@ const CourseContent = ({ route, navigation }) => {
                               </>
 
 
-                  )} />
+                  )} 
+                  ListEmptyComponent={
+                    <View style={{ alignItems: 'center', marginTop: 40 }}>
+                      <Text style={{ fontSize: 16, color: 'gray' }}>
+                        No content available for this course.
+                      </Text>
+                    </View>
+                  }
+                  />
+                )}
                 
           </View></>
   );

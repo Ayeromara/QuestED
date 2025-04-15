@@ -13,7 +13,7 @@ const Badge = () =>{
                 onPress={() => {
                     Alert.alert(
                       'Start Learning',          // Title
-                      'Select a Course Bellow.',    // Message
+                      'Select a Course Bellow to get Started.',    // Message
                       [
                         { text: 'Cancel', style: 'cancel' },
                       ],

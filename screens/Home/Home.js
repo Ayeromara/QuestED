@@ -1,16 +1,14 @@
 import React from "react";
 import style from "./style";
-import { useState,useEffect } from "react";
+import {useEffect } from "react";
 import { SafeAreaView, View , Text, Image, ActivityIndicator, FlatList, TouchableOpacity,} from "react-native";
 import globalStyle from "../../assets/styles/globalStyles";
 import Header from "../../components/Header/Header";
 import SearchCard from "../../components/SearchCard/SearchCard";
 import Badge from "../../components/Badge/Badge";
 import { useSelector, useDispatch } from "react-redux";
-import { Pressable, ScrollView } from "react-native-gesture-handler";
-import { fetchCourses, updateSelectedCoursesId } from "../../redux/reducers/Courses";
+import { fetchCourses } from "../../redux/reducers/Courses";
 import { Routes } from "../../navigation/Routes";
-import { fetchUserdata } from "../../redux/reducers/authSlice";
 
 
 
@@ -33,7 +31,7 @@ const Home = ({navigation}) =>{
               <ActivityIndicator size="large" color="#000" />
             </View>
           );
-          
+
       if (error) return <Text>Error: {error}</Text>;
 
     return (
