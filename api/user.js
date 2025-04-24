@@ -71,7 +71,9 @@ export const loginUser = async(email, password) =>{
                 token,
             },
         }
+        
     } catch(error){
+        console.log(error.code)
         if(error.code === 'auth/wrong-password'){
         return {status: false, error: 'please enter a correct password'}
         }
@@ -82,9 +84,19 @@ export const loginUser = async(email, password) =>{
                 'The email you entered does not exist. Please create a new account.',
             };
         }
+        else if (error.code === 'auth/invalid-credential') {
+            return {
+              status: false,
+              error:
+                'Invalid credential.',
+            };
+        }
+
         return {status: false, error: 'Something went wrong'};
     }
+    
 }
+
 
 
 

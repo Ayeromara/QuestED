@@ -65,7 +65,8 @@ const Login = ({navigation})=>{
                     else {
                         setError('')
                         dispatch(logIn(user.data))
-                        navigation.navigate('Home')
+                        navigation.navigate(Routes.MainApp, { screen: (Routes.Home) });
+
                     }
                 }}
                 type={2} 

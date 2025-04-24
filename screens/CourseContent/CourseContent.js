@@ -8,6 +8,7 @@ import style from "./style";
 import BackButton from "../../components/BackButton/BackButton";
 import { collection, getDocs, query } from '@react-native-firebase/firestore';
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { Routes } from "../../navigation/Routes";
 
 
 const CourseContent = ({ route, navigation }) => {
@@ -52,7 +53,7 @@ const CourseContent = ({ route, navigation }) => {
         
       <View style={style.CDetail}>
 
-            <BackButton onPress={()=> navigation.navigate('Home')}/>
+            <BackButton onPress={()=> navigation.navigate(Routes.MainApp)}/>
             
             <View>
                 <Text style={style.text}>Course Content</Text>

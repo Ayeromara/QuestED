@@ -19,9 +19,6 @@ const Home = ({navigation}) =>{
     const user = useSelector(state => state.user);
     const {courses, loading, error} = useSelector(state => state.courses);
 
-
-    console.log(courses)
-
     useEffect(() => {
         dispatch(fetchCourses());
       }, [dispatch]);
