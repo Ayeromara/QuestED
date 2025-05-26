@@ -22,6 +22,15 @@ const firebaseConfig = {
 
 export const createUser = async(fullName, email, password,matric) =>{
     try{
+
+            // ✅ Validate matric number format
+    const isValidMatric = /^210103060\d{2}$/.test(matric.trim());
+    if (!isValidMatric) {
+      return {
+        status: false,
+        error: 'Matric number must start with 210103060 and end with 2 digits (e.g. 21010306012)',
+      };
+    }
             // Check if matric number already exists
     const q = query(collection(db, "users"), where("matric", "==", matric));
     const existing = await getDocs(q);
