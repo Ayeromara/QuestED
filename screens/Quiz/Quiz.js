@@ -15,6 +15,7 @@ const Quiz = ({ navigation,route }) => {
     const [quiz, setQuiz] = useState([]);
     const [selectedOption, setSelectedOption] = useState(null);
     const [isCorrect, setisCorrect] = useState(null);
+    const [ItIS, setIt] = useState(null);
     const [point, setPoint] = useState(null);
     const [userData, setUserData] = useState(null);
     const [currentQuestionIndex, setcurrentQuestionIndex] = useState(0);
@@ -109,12 +110,19 @@ const Quiz = ({ navigation,route }) => {
                 
                 {quiz[currentQuestionIndex].options.map((option, index) => (
                     <Pressable 
-                    onPress={()=> handleOptionPress(option)}
+                    onPress={()=> handleOptionPress(option)
+                    }
                     style={[
                         style.ansCont,
+
                         selectedOption === option && (
                             isCorrect ? style.correctOpt : style.wrongOpt
-                        )
+                        ),
+    selectedOption !== null &&
+        option === quiz[currentQuestionIndex].answer &&
+        selectedOption !== option &&
+        style.correctOpt
+                        
                     ]} 
                     key={index}
                     disabled={!!selectedOption}>

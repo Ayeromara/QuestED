@@ -1,6 +1,6 @@
 import { initializeApp } from '@react-native-firebase/app';
 import auth from '@react-native-firebase/auth'
-import firestore, { getFirestore } from '@react-native-firebase/firestore';
+import firestore, { collection, getDocs, getFirestore, query, where } from '@react-native-firebase/firestore';
 
 
 
@@ -20,8 +20,16 @@ const firebaseConfig = {
 
 
 
-export const createUser = async(fullName, email, password) =>{
+export const createUser = async(fullName, email, password,matric) =>{
     try{
+            // Check if matric number already exists
+    const q = query(collection(db, "users"), where("matric", "==", matric));
+    const existing = await getDocs(q);
+
+    if (!existing.empty) {
+      throw new Error("Matric number already in use");
+    }
+
         const user = await auth().createUserWithEmailAndPassword(email, password);
         await user.user.updateProfile({displayName: fullName})
 
@@ -36,6 +44,7 @@ export const createUser = async(fullName, email, password) =>{
         .doc(userId)          // Document ID = user UID
         .set({
         name: fullName,
+        matric: matric,
         email: email,
         points: 0,
         completedCourses: [],
@@ -59,8 +68,18 @@ export const createUser = async(fullName, email, password) =>{
 }
 
 
-export const loginUser = async(email, password) =>{
+export const loginUser = async(matric, password) =>{
     try{
+         const q = query(collection(db, "users"), where("matric", "==", matric));
+    const snapshot = await getDocs(q);
+
+    if (snapshot.empty) {
+      throw new Error("Matric number not found");
+    }
+
+    const userData = snapshot.docs[0].data();
+    const email = userData.email;
+
         const response = await auth().signInWithEmailAndPassword(email, password);
         const token = await response.user.getIdToken();
         return{
@@ -69,6 +88,7 @@ export const loginUser = async(email, password) =>{
                 displayName:response.user.displayName,
                 email: response.user.email,
                 token,
+                matric: userData.matric,
             },
         }
         

@@ -45,7 +45,7 @@ const Login = ({navigation})=>{
 
                     <Input 
                     type={4} 
-                    placeholder={'Email'} onChangeText={(value) => setEmail(value)}/>
+                    placeholder={'Matric number'} onChangeText={(value) => setEmail(value)}/>
 
                     <Input 
                     secureTextEntry= {true}
